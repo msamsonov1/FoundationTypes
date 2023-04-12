@@ -1,0 +1,24 @@
+depth = float(input("Enter depth from ground surface in meters: "))
+soil_type = input("Enter soil type (clay or other): ")
+load_type = input("Enter load type (compression, tension, bending, or other): ")
+if soil_type == "clay" and depth < 3:
+    foundation_type = "shallow footing"
+elif soil_type == "clay" and depth >= 3:
+    foundation_type = "long piles"
+elif load_type == "compression":
+    foundation_type = "friction pile"
+elif load_type == "tension":
+    foundation_type = "tension pile"
+elif load_type == "bending":
+    foundation_type = "resistance to bending"
+elif load_type == "other" and depth <= 2:
+    foundation_type = "battered group"
+elif load_type == "other" and depth > 2:
+    foundation_type = "pile anchored on swelling soil"
+else:
+    foundation_type = "driven or drilled end bearing"
+if load_type == "other" and depth > 2:
+    foundation_type += " and support for future excavation"
+if load_type == "other" and depth < 2:
+    foundation_type += " and load transfer below scour"
+print("Recommended foundation type: ", foundation_type)
