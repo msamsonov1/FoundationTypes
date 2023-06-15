@@ -1,0 +1,23 @@
+import math
+
+# Ask the user to input D
+D = float(input("Enter the diameter of the pile 3x3 group (ft): "))
+
+# Define the other variables
+z = float(input("Enter spacing between piles (ft): ")) # Spacing between piles (ft)
+FS = 2 # Safety factor
+L = 40 # Length of piles (ft)
+
+# Calculate the width of the pile group
+B = D + (2 * z)
+
+# Calculate the area of the pile group
+A1 = ((B + (L / 2)))**2
+A2 = B**2
+Vf = 0.333 * L * ((A1 + A2 + math.sqrt(A1 * A2)))
+
+# Calculate the allowable pile group uplift capacity
+AllUpCap = Vf * 130 / 1000 / FS
+
+# Print the allowable pile group uplift capacity
+print(f"The allowable pile group uplift capacity is {AllUpCap:.2f} kips.")
